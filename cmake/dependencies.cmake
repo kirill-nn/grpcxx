@@ -126,7 +126,7 @@ else()
 endif()
 
 # protobuf
-find_package(Protobuf ${PROTOBUF_MINVERSION} REQUIRED)
+find_package(Protobuf REQUIRED)
 
 if(NOT GRPCXX_HERMETIC_BUILD)
     find_package(fmt ${FMT_MINVERSION} REQUIRED)
