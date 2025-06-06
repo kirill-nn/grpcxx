@@ -4,6 +4,8 @@
 # one level above, or the public headers into their own
 # subfolder, but this works too.
 
+find_package(asio CONFIG REQUIRED)
+
 add_library(grpcxx)
 target_sources(grpcxx
 	PRIVATE
@@ -106,12 +108,15 @@ if (NOT GRPCXX_USE_ASIO)
 else() # ASIO version
 	target_link_libraries(grpcxx
 		PUBLIC
-			asio
+			asio::asio
 	)
 
 	target_compile_definitions(grpcxx
 		PUBLIC
 			GRPCXX_USE_ASIO
+			ASIO_NS=::asio
+			ASIO_STANDALONE
+			ASIO_NO_DEPRECATED
 	)
 endif()
 
