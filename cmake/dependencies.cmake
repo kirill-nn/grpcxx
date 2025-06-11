@@ -11,8 +11,8 @@ if(NOT GRPCXX_USE_ASIO)
     if(GRPCXX_HERMETIC_BUILD)
         # libuv
         FetchContent_Declare(libuv
-            GIT_REPOSITORY https://github.com/libuv/libuv
-            GIT_TAG v1.x
+            URL      https://github.com/libuv/libuv/archive/refs/tags/v${LIBUV_MINVERSION}.tar.gz
+            URL_HASH SHA256=7aa66be3413ae10605e1f5c9ae934504ffe317ef68ea16fdaa83e23905c681bd
         )
 
         set(LIBUV_BUILD_SHARED ${BUILD_SHARED_LIBS} CACHE BOOL "Build libuv shared lib")
@@ -105,8 +105,8 @@ if(NOT GRPCXX_HERMETIC_BUILD)
     add_library(libnghttp2::nghttp2 ALIAS PkgConfig::nghttp2)
 else()
     FetchContent_Declare(nghttp2
-        GIT_REPOSITORY  https://github.com/nghttp2/nghttp2
-        GIT_TAG         master
+        URL      https://github.com/nghttp2/nghttp2/releases/download/v${NGHTTP2_MINVERSION}/nghttp2-${NGHTTP2_MINVERSION}.tar.xz
+        URL_HASH SHA256=88bb94c9e4fd1c499967f83dece36a78122af7d5fb40da2019c56b9ccc6eb9dd
     )
 
     if (NOT BUILD_SHARED_LIBS)
