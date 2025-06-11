@@ -3,6 +3,10 @@
 #include <algorithm>
 #include <string_view>
 
+#ifdef __cplusplus
+extern "C++" {
+#endif
+
 namespace grpcxx {
 namespace detail {
 template <class CharT, std::size_t N> struct basic_fixed_string {
@@ -38,3 +42,7 @@ template <std::size_t N> struct fixed_string : detail::basic_fixed_string<char, 
 
 template <fixed_string T> struct fixed_string_t {};
 } // namespace grpcxx
+
+#ifdef __cplusplus
+}
+#endif

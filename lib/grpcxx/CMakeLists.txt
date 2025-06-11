@@ -89,18 +89,13 @@ target_link_libraries(grpcxx
         libnghttp2::nghttp2
 )
 
+target_compile_definitions(grpcxx PRIVATE NGHTTP2_NO_SSIZE_T)
+
 if (NOT GRPCXX_USE_ASIO)
-    if (BUILD_SHARED_LIBS)
         target_link_libraries(grpcxx
                 PUBLIC
                 libuv::uv
         )
-    else ()
-        target_link_libraries(grpcxx
-                PUBLIC
-                libuv::uv_a
-        )
-    endif ()
 
     # On Mac OS X, when libc++ is used with CLang,
     # stop_token for some reason is still not stabilized.

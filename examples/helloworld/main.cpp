@@ -1,4 +1,5 @@
 #include "helloworld/v1/greeter.grpcxx.pb.h"
+#include "helloworld/v1/greeter.pb.h"
 
 #include <grpcxx/server.h>
 

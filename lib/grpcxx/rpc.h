@@ -8,6 +8,10 @@
 #include <string>
 #include <string_view>
 
+#ifdef __cplusplus
+extern "C++" {
+#endif
+
 namespace grpcxx {
 template <fixed_string M, typename T, typename U> struct rpc {
 	static constexpr std::string_view method{M};
@@ -58,3 +62,7 @@ template <fixed_string M, typename T, typename U> struct rpc {
 	}
 };
 } // namespace grpcxx
+
+#ifdef __cplusplus
+}
+#endif
